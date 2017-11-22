@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+<p>
+  <strong>Title:</strong>
+  <%= @post.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @post.description %>
+</p>
+
+<p>
+<strong>Image:</strong>
+  <%= image_tag @post.image.thumb.url %>
+</p>
+
+<%if current_user.id != @post.user.id%>
+    <%if current_user.likes? (@post)%>
+        <%= link_to 'unlike', like_post_path(@post) %>
+    <% else %>
+        <%= link_to 'like', like_post_path(@post) %>
+    <% end %>
+<% end %>
+
+<%if current_user.id != @post.user.id%>
+      <%= link_to 'follow', follow_post_path(@post)%>
+<% end %>
+
+<%if current_user.id == @post.user.id%>
+  <%= link_to 'Edit', edit_post_path(@post) %> 
+<% end %>
+<%= link_to 'Back', posts_path %>
