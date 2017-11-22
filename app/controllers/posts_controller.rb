@@ -60,9 +60,11 @@ class PostsController < ApplicationController
 
   def follow
   
-    current_user.follow(@post)
+    current_user.follow(@post.user)
     redirect_to @post
   end
+
+  
 
   # DELETE /posts/1
   # DELETE /posts/1.json

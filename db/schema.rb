@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171121170527) do
+ActiveRecord::Schema.define(version: 20171122134627) do
 
   create_table "comments", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -65,6 +65,8 @@ ActiveRecord::Schema.define(version: 20171121170527) do
     t.datetime "updated_at", null: false
     t.string "name"
     t.string "username"
+    t.integer "likee_count", default: 0
+    t.integer "followees_count", default: 0
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
